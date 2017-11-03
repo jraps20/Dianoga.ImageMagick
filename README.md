@@ -1,0 +1,1 @@
+# Dianoga.ImageMagick
