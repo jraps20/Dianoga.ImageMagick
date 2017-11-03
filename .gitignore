@@ -1,0 +1,17 @@
+nuget.exe
+*.nuspec
+.vs/*
+packages
+lib/*
+*.user
+src/App_Config/Include/Dianoga/Dianoga.c*
+src/App_Config/Include/Dianoga/Dianoga.E*
+src/App_Config/Include/Dianoga/Dianoga.J*
+src/App_Config/Include/Dianoga/Dianoga.P*
+src/App_Config/Include/Dianoga/Dianoga.S*
+src/App_Data/Dianoga Tools/m*
+src/App_Data/Dianoga Tools/P*
+src/App_Data/Dianoga Tools/S*
+src/bin
+src/obj
+src/Properties/PublishProfiles
