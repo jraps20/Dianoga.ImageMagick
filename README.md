@@ -34,3 +34,5 @@ Dianoga.ImageMagick keys off of the following settings included with Sitecore:
 If either `Media.Resizing.MaxWidth` or `Media.Resizing.MaxHeight` are set, or if *both* are set, it will enforce these on the image. Therefore, if an image is requested that has a larger width than is supported in the `Media.Resizing.MaxWidth`, it will be resized keeping its aspect ratio down to the MaxWidth.  The same goes for the height.
 
 To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config** or patch in via a separate config file.
+
+I have found that a quality setting of 70(%) provides significant performance increases without sacrificing quality. Even going down as far as 50% was difficult to tell the difference, especially for smaller images. *Choose a setting that best fits your site.*
