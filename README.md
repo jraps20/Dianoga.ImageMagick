@@ -8,7 +8,7 @@ This add-on specifically targets the JPEG image format.  It utilizes the ImageMa
 
 # Installation
 
-Simply install the NuGet package "Dianoga.ImageMagick" (https://www.nuget.org/packages/Dianoga.ImageMagick/1.0.1) into your Sitecore web project, build and deploy to your Sitecore root.
+Simply install the NuGet package "Dianoga.ImageMagick" (https://www.nuget.org/packages/Dianoga.ImageMagick) into your Sitecore web project, build and deploy to your Sitecore root.
 
 That's it :)
 
