@@ -3,7 +3,7 @@ using Sitecore.Configuration;
 
 namespace Dianoga.ImageMagick
 {
-    public class ImageMagickJpegOptimizer : CommandLineToolOptimizer
+    public class ImageMagickResizer : CommandLineToolOptimizer
     {
         private static int MaxWidth => Settings.Media.Resizing.MaxWidth;
         private static int MaxHeight => Settings.Media.Resizing.MaxHeight;
