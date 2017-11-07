@@ -4,7 +4,7 @@ An Add-on to the widely used Dianoga Automatic Image Resizing module by Kamsar.
 
 https://github.com/kamsar/Dianoga
 
-This add-on specifically targets the JPEG image format.  It utilizes the ImageMagick portable exe to reduce the overall size and dimensions (if desired) of images in Sitecore.
+This add-on specifically targets the JPEG image format.  It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings.
 
 # Installation
 
@@ -25,16 +25,15 @@ Aside from the files included with Dianoga, Dianoga.ImageMagick includes the fol
 
 Dianoga.ImageMagick keys off of the following settings included with Sitecore:
 
-* `Media.Resizing.Quality`
 * `Media.Resizing.MaxWidth`
 * `Media.Resizing.MaxHeight`
-
-`Media.Resizing.Quality` is the only required setting.  Given a value, ImageMagick will convert the requested image to the set quality and store it in the sites `MediaCache`.
 
 If either `Media.Resizing.MaxWidth` or `Media.Resizing.MaxHeight` are set, or if *both* are set, it will enforce these on the image. Therefore, if an image is requested that has a larger width than is supported in the `Media.Resizing.MaxWidth`, it will be resized keeping its aspect ratio down to the MaxWidth.  The same goes for the height.
 
 To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config** or patch in via a separate config file.
 
-## Recommendation
+## How Does It Do it?
 
-I have found that a quality setting of 70(%) provides significant performance increases without sacrificing quality. Even going down as far as 50% was difficult to tell the difference, especially for smaller images. *Choose a setting that best fits your site.*
+When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga JPEG processor (JpegTrans) to reduce the size even more.
+
+This prevents the server from sending very large images to the client. By default, Sitecore *will allow* images larger than the `MaxWidth` or height if the original image in the Media Library is larger than these set sizes. The only real use for these settings by default, is to disallow upscaling of images, which does not help if content authors upload overly large images to begin with.
