@@ -16,3 +16,4 @@ src/bin
 src/obj
 src/Properties/PublishProfiles
 *.nupkg
+*.ps1
