@@ -76,7 +76,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config" />
+    <Content Include="App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="App_Data\Dianoga Tools\mozjpeg_3.1_x86\jpegtran.exe" />
     <Content Include="App_Data\Dianoga Tools\mozjpeg_3.1_x86\libjpeg-62.dll" />
     <Content Include="App_Data\Dianoga Tools\mozjpeg_3.1_x86\LICENSE.txt" />
@@ -473,8 +475,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Dianoga Tools\imagemagick\magic.xml" />
-    <Content Include="App_Data\Dianoga Tools\imagemagick\magick.exe" />
+    <Content Include="App_Data\Dianoga Tools\imagemagick\magic.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\Dianoga Tools\imagemagick\magick.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
