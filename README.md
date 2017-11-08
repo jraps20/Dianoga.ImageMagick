@@ -4,7 +4,7 @@ An Add-on to the widely used Dianoga Automatic Image Resizing module by Kamsar.
 
 https://github.com/kamsar/Dianoga
 
-It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings.
+It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings as well as a few ImageMagick specific optimizations.
 
 # Installation
 
