@@ -37,3 +37,21 @@ To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.Image
 When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga processor (JpegTrans for JPEG, PngOptimizer for PNG) to reduce the size even more.
 
 This prevents the server from sending very large images to the client. By default, Sitecore *will allow* images larger than the `MaxWidth` or height if the original image in the Media Library is larger than these set sizes. The only real use for these settings by default, is to disallow upscaling of images, which does not help if content authors upload overly large images to begin with.
+
+## Extra Features
+
+JPEG
+
+`<AdditionalImageMagick>-quality 70 -dither None -gaussian-blur 0.05 -define jpeg:fancy-upsampling=off -interlace none -colorspace sRGB</AdditionalImageMagick>`
+
+Note that quality was moved from `Media.Resizing.Quality` to direclty within the ImageMagick call. This is due to the fact that Sitecore will not adhere to the quality setting for an image that does not alter the original image.  For example, if an author were to embed a very large, high-quality image into a rich text field, the image will be served as-is. By moving the setting to ImageMagick, it can run the quality check for all images.
+
+PNG
+
+`<AdditionalImageMagick>-define png:compression-filter=5 -define png:compression-level=9 -define png:compression-strategy=1 -gaussian-blur 0.05</AdditionalImageMagick>`
+
+Some various, standard compression parameters included. For quicker resizing, remove some of the options to sacrifice final image size.
+
+### A note regarding Gaussian Blur
+
+This setting reduces the final image size significantly. If the images appear to blurred, remove this option. In my testing it was difficult to notice unless flipping between the original and converted image.
