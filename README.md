@@ -4,7 +4,7 @@ An Add-on to the widely used Dianoga Automatic Image Resizing module by Kamsar.
 
 https://github.com/kamsar/Dianoga
 
-This add-on specifically targets the JPEG image format.  It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings.
+It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings.
 
 # Installation
 
@@ -34,6 +34,6 @@ To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.Image
 
 ## How Does It Do it?
 
-When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga JPEG processor (JpegTrans) to reduce the size even more.
+When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga processor (JpegTrans for JPEG, PngOptimizer for PNG) to reduce the size even more.
 
 This prevents the server from sending very large images to the client. By default, Sitecore *will allow* images larger than the `MaxWidth` or height if the original image in the Media Library is larger than these set sizes. The only real use for these settings by default, is to disallow upscaling of images, which does not help if content authors upload overly large images to begin with.
