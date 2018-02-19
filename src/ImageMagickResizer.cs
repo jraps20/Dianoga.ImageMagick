@@ -24,7 +24,7 @@ namespace Dianoga.ImageMagick
         protected override string CreateToolArguments(string tempFilePath, string tempOutputPath)
         {
             if(MaxWidth > 0 && MaxHeight > 0)
-                return $"convert \"{tempFilePath}\" {AdditionalImageMagick} -resize x{MaxHeight}^> -resize {MaxWidth}^> \"{tempOutputPath}\"";
+                return $"convert \"{tempFilePath}\" {AdditionalImageMagick} -resize x{MaxHeight}> -resize {MaxWidth}> \"{tempOutputPath}\"";
             
             if (MaxWidth > 0)
                 return $"convert \"{tempFilePath}\" {AdditionalImageMagick} -resize {MaxWidth}> \"{tempOutputPath}\"";
