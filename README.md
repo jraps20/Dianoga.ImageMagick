@@ -4,7 +4,9 @@ An Add-on to the widely used Dianoga Automatic Image Resizing module by Kamsar.
 
 https://github.com/kamsar/Dianoga
 
-It utilizes the ImageMagick portable exe to reduce dimensions of images in Sitecore by enforcing the `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight` settings as well as a few ImageMagick specific optimizations.
+This add-on performs lossy compression with the ImageMagick portable exe, whereas native Dianoga does not drop the quality of the image. JPEGs can often be reduced to 70% quality without any noticable impact on the final rendered image. The result is a drastically smaller file size for the image. It also enforces the Sitecore settings `Media.Resizing.MaxWidth` and `Media.Resizing.MaxHeight`. It will not allow an image of greater dimensions to be served. It also includes a few ImageMagick specific optimizations that can be modififed.
+
+By default, `MaxWidth` and `MaxHeight` are not enforced on an image unless the image is upscaled by Sitecore via query string parameters on the image. Therefore if an image is uploaded at 5000px x 5000px, Sitecore will server this full, large image to the end user. The default settings for Dianoga.ImageMagick are 1920x1080. No image larger than this will be served. When downscaling, the original image proportions are respected. 
 
 # Installation
 
@@ -32,13 +34,15 @@ If either `Media.Resizing.MaxWidth` or `Media.Resizing.MaxHeight` are set, or if
 
 To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config** or patch in via a separate config file.
 
-## How Does It Do it?
+## Image Resizing?
 
 When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga processor (JpegTrans for JPEG, PngOptimizer for PNG) to reduce the size even more.
 
 This prevents the server from sending very large images to the client. By default, Sitecore *will allow* images larger than the `MaxWidth` or height if the original image in the Media Library is larger than these set sizes. The only real use for these settings by default, is to disallow upscaling of images, which does not help if content authors upload overly large images to begin with.
 
-## Extra Features
+## Lossy Compression
+
+Dianoga.ImageMagick intentionally sets the `Media.Resizing.Quality` setting to 100, to allow the ImageMagick-magic to reduce the quality. This prevents double quality drop from occuring.
 
 JPEG
 
