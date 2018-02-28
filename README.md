@@ -34,13 +34,13 @@ If either `Media.Resizing.MaxWidth` or `Media.Resizing.MaxHeight` are set, or if
 
 To change any of these values, edit **App_Config\Include\Dianoga\Dianoga.Z.ImageMagick.config** or patch in via a separate config file.
 
-## Image Resizing?
+## Image Resizing - Height and Width
 
 When an image is requested and it exceeds the `MaxWidth` or `MaxHeight` settings, ImageMagick resizes the image, retaining the aspect ratio. It then sends the resized image to the default Dianoga processor (JpegTrans for JPEG, PngOptimizer for PNG) to reduce the size even more.
 
 This prevents the server from sending very large images to the client. By default, Sitecore *will allow* images larger than the `MaxWidth` or height if the original image in the Media Library is larger than these set sizes. The only real use for these settings by default, is to disallow upscaling of images, which does not help if content authors upload overly large images to begin with.
 
-## Lossy Compression
+## Lossy Compression - Reducing Final File Size (kilobytes/megabytes)
 
 Dianoga.ImageMagick intentionally sets the `Media.Resizing.Quality` setting to 100, to allow the ImageMagick-magic to reduce the quality. This prevents double quality drop from occuring.
 
